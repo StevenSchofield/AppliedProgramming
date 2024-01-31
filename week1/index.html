@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <header>
-        <title>Basic Drawer</title>
-    </header>
     <style>
         canvas {
             border: 2px solid black;
+            position: absolute;
+            top: 10;
+            left: 10;
+            cursor: none;
+        }
+        header {
+            margin: 10px;
         }
     </style>
+    <header>
+        <title>Basic Drawer</title>
+        
+        <label for="sizeInput">Size:</label>
+        <input id="sizeInput" type="number" value="5" min="1" max="50">
+
+        <label for="colorInput">Color:</label>
+        <input id="colorInput" type="color" value="#000000">
+    </header>
     <body>
-        <canvas id="DrawingCanvas" width=500 height=500>
+        <canvas id="DrawingCanvas" width="400" height="400" >
             If you can read this, your Browser does not support HTML5 Canvas
         </canvas>
-        <form action="">
-            <label for="sizeInput">Size:</label>
-            <input id="sizeInput" type="number" value="5" min="1" max="50">
-
-            <label for="colorInput">Color:</label>
-            <input id="colorInput" type="color" value="#000000">
-        </form>
+        <canvas id="BrushPreviewCanvas" width="400" height="400"></canvas>
     </body>
 
     <script src="script.js"></script>

@@ -1,6 +1,8 @@
 // Get a reference to the various HTML objects
 var canvas = document.getElementById("DrawingCanvas");
 var ctx = canvas.getContext("2d");
+var previewCanvas = document.getElementById("BrushPreviewCanvas");
+var pctx = previewCanvas.getContext("2d");
 var colorInput = document.getElementById("colorInput");
 var sizeInput = document.getElementById("sizeInput");
 // Making a function to get the mouse position on the canvas
@@ -36,13 +38,21 @@ var brush = {
     draw: function (event) {
         // Get the current x y position
         brush.position = getLocalMousePos(event);
-        // Brush preview
-        ctx.beginPath();
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 2;
-        ctx.arc(brush.position.x, brush.position.y, brush.s / 2, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.closePath();
+        // Brush preview (white outer circle so you can always tell where the mouse is)
+        pctx.beginPath();
+        pctx.clearRect(0, 0, canvas.width, canvas.height);
+        pctx.strokeStyle = "#ffffff";
+        pctx.lineWidth = 2;
+        pctx.arc(brush.position.x, brush.position.y, brush.s / 2, 0, Math.PI * 2);
+        pctx.stroke();
+        pctx.closePath();
+        // Brush preview (inner circle the color of the brush)
+        pctx.beginPath();
+        pctx.strokeStyle = brush.c;
+        pctx.lineWidth = 1;
+        pctx.arc(brush.position.x, brush.position.y, brush.s / 2, 0, Math.PI * 2);
+        pctx.stroke();
+        pctx.closePath();
         // Draw a line from the last mouse position to the new one. Update lastPosition
         if (brush.down) {
             ctx.beginPath();
@@ -80,9 +90,9 @@ var brush = {
     }
 };
 // Canvas listeners
-canvas.addEventListener("mousedown", brush.start);
-canvas.addEventListener("mouseup", brush.stop);
-canvas.addEventListener("mousemove", brush.draw);
+previewCanvas.addEventListener("mousedown", brush.start);
+previewCanvas.addEventListener("mouseup", brush.stop);
+previewCanvas.addEventListener("mousemove", brush.draw);
 // Listener for the color picker
 document.addEventListener("click", function () {
     brush.setColor();
