@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Factorio Production Guide</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.8.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.8.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.8.0/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <style>
+      body {
+          padding: 10px;
+      }
+      .tag_content {
+          padding: 10px;
+          border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Factorio Production Guide</h1>
+    <div class="tags">
+        <button>Add Data</button>
+        <button>Generate Production</button>
+    </div>
+
+    <div id="add_data" class="tag_content">
+        <div class="tags" id="add_data_content">
+            <button id="add_product">Add Product</button>
+            <button id="add_recipe">Add Recipe</button>
+
+            <div class="tag_content" id="add_product_content"></div>
+
+        </div>
+    </div>
+  </body>
+</html>
